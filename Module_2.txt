@@ -1,0 +1,191 @@
+===========================
+MODULE 2 - SECTION 2.1.2
+===========================
+
+A function (in this context) is a separate part of the computer code able to:
+
+    - cause some effect (e.g., send text to the terminal, create a file, draw an image, play a sound, etc.); this is something completely unheard of in the world of mathematics;
+    - evaluate a value (e.g., the square root of a value or the length of a given text) and return it as the function's result; this is what makes Python functions the relatives of mathematical concepts.
+
+Where do the functions come from?
+1. They may come from Python itself; the print function is one of this kind; such a function is an added value received together with Python and its environment (it is built-in); you don't have to do anything special (e.g., ask anyone for anything) if you want to make use of it;
+
+2. They may come from one or more of Python's add-ons named modules; some of the modules come with Python, others may require separate installation - whatever the case, they all need to be explicitly connected with your code (we'll show you how to do that soon);
+
+3. You can write them yourself, placing as many functions as you want and need inside your program to make it simpler, clearer and more elegant.
+
+
+===========================
+MODULE 2 - SECTION 2.1.3
+===========================
+
+Function arguments
+
+A function may have:
+
+    - an effect;
+    - a result.
+
+There's also a third, very important, function component ‒ the argument(s). 
+
+Python functions depending on the individual needs, they may accept any number of arguments ‒ as many as necessary to perform their tasks. Note: When we said any number, that includes zero ‒ some Python functions don't need any argument.
+print("Hello, World!")
+
+In spite of the number of needed/provided arguments, Python functions strongly demand the presence of a pair of parentheses ‒ opening and closing ones, respectively.
+
+***
+print("Hello, World!")
+The string is delimited with quotes ‒ in fact, the quotes make the string ‒ they cut out a part of the code and assign a different meaning to it.
+Almost anything you put inside the quotes will be taken literally, not as code, but as data.
+
+
+===========================
+MODULE 2 - SECTION 2.1.3
+===========================
+
+Function invocation (wywołanie)
+A function invocation is one of many possible kinds of Python instruction.
+
+The function name (print in this case) along with the parentheses and argument(s), forms the function invocation.
+
+What happens when Python encounters an invocation like this one below?
+function_name(argument)
+
+Let's see:
+
+    - First, Python checks if the name specified is legal (it browses its internal data in order to find an existing function of the name; if this search fails, Python aborts the code)
+    - second, Python checks if the function's requirements for the number of arguments allows you to invoke the function in this way (e.g., if a specific function demands exactly two arguments, any invocation delivering only one argument will be considered erroneous, and will abort the code's execution)
+    - third, Python leaves your code for a moment and jumps into the function you want to invoke; of course, it takes your argument(s) too and passes it/them to the function;
+    - fourth, the function executes its code, causes the desired effect (if any), evaluates the desired result(s) (if any) and finishes its task;
+    - finally, Python returns to your code (to the place just after the invocation) and resumes its execution.
+
+
+
+===========================
+MODULE 2 - SECTION 2.1.6
+===========================  
+
+Three important questions have to be answered as soon as possible:
+
+1. What effect does the print() function cause?
+
+The effect is very useful and very spectacular. The function:
+
+    - takes its arguments (it may accept more than one argument and may also accept less than one argument)
+    - converts them into human-readable form if needed (as you may suspect, strings don't require this action, as the string is already readable)
+    - and sends the resulting data to the output device (usually the console); in other words, anything you put into the print() function will appear on your screen.
+
+No wonder then, that from now on, you'll utilize print() very intensively to see the results of your operations and evaluations.
+
+2. What arguments does print() expect?
+
+Any. We'll show you soon that print() is able to operate with virtually all types of data offered by Python. Strings, numbers, characters, logical values, objects ‒ any of these may be successfully passed to print().
+
+3. What value does the print() function return?
+
+=== !!!!!!! ===== None. Its effect is enough.
+
+
+===========================
+MODULE 2 - SECTION 2.1.7
+=========================== 
+Instructions 
+
+A function invocation is one of many possible kinds of Python instruction.
+
+
+***
+How do you couple more than one instruction into the Python code?
+
+Python's syntax is quite specific in this area. Unlike most programming languages, Python requires that there cannot be more than one instruction in a line.
+A line can be empty (i.e., it may contain no instruction at all) but it must not contain two, three or more instructions. This is strictly prohibited.
+
+
+The instructions in the code are executed in the same order in which they have been placed in the source file; no subsequent instruction is executed until the previous one is completed. (in some cases).
+
+
+===========================
+MODULE 2 - SECTION 2.1.8
+===========================
+Python escape and newline characters 
+
+print("The itsy bitsy spider\nclimbed up the waterspout.")
+print()
+print("Down came the rain\nand washed the spider out.")
+
+Interestingly, while you can see two characters, Python sees one.
+
+The backslash (\) has a very special meaning when used inside strings ‒ this is called the escape character.
+
+The word escape should be understood specifically ‒ it means that the series of characters in the string escapes for the moment (a very short moment) to introduce a special inclusion.
+
+In other words, the backslash doesn't mean anything in itself, but is only a kind of announcement, that the next character after the backslash has a different meaning too.
+
+The letter n placed after the backslash comes from the word newline.
+Both the backslash and the n form a special symbol named a newline character, which urges the console to start a new output line.
+
+
+1. If you want to put just one backslash inside a string, don't forget its escaping nature ‒ you have to double it. For example, an invocation like this will cause an error:
+print("\")
+
+while this one won't:
+print("\\")
+
+2. Not all escape pairs (the backslash coupled with another character) mean something.
+
+------
+
+print("The itsy bitsy spider" , "climbed up" , "the waterspout.")
+
+Two conclusions emerge from this example:
+
+   -  a print() function invoked with more than one argument outputs them all on one line;
+   - the print() function puts a space between the outputted arguments on its own initiative.
+
+
+===========================
+MODULE 2 - SECTION 2.1.10
+===========================
+Positional arguments 
+
+print("My name is", "Python.")
+print("Monty Python.")
+
+The way in which we are passing the arguments into the print() function is the most common in Python, and is called the positional way. This name comes from the fact that the meaning of the argument is dictated by its position (e.g., the second argument will be outputted after the first, not the other way round).
+
+
+===========================
+MODULE 2 - SECTION 2.1.11
+===========================
+Keyword arguments 
+
+print("My name is", "Python.", end=" ")
+print("Monty Python.")
+
+output:
+My name is Python. Monty Python.
+
+
+The mechanism is called keyword arguments. The name stems from the fact that the meaning of these arguments is taken not from its location (position) but from the special word (keyword) used to identify them.
+
+The print() function has two keyword arguments that you can use for your purposes. The first is called end.
+
+
+
+In order to use it, it is necessary to know some rules:
+
+    - a keyword argument consists of three elements: a keyword identifying the argument (end here); an equal sign (=); and a value assigned to that argument;
+    - any keyword arguments have to be put after the last positional argument (this is very important)
+
+In our example, we have made use of the end keyword argument, and set it to a string containing one space.
+
+Run the code to see how it works.
+
+The console should now be showing the following text:
+
+My name is Python. Monty Python.
+Output
+
+As you can see, the end keyword argument determines the characters the print() function sends to the output once it reaches the end of its positional arguments.
+
+The default behavior reflects the situation where the end keyword argument is implicitly used in the following way: end="\n".
