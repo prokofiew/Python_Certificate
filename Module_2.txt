@@ -184,8 +184,422 @@ Run the code to see how it works.
 The console should now be showing the following text:
 
 My name is Python. Monty Python.
-Output
+
 
 As you can see, the end keyword argument determines the characters the print() function sends to the output once it reaches the end of its positional arguments.
 
 The default behavior reflects the situation where the end keyword argument is implicitly used in the following way: end="\n".
+
+------------
+
+The print() function separates its outputted arguments with spaces. This behavior can be changed, too.
+
+The keyword argument that can do this is named sep (as in separator).
+print("My", "name", "is", "Monty", "Python.", sep="-")
+
+output:
+My-name-is-Monty-Python.
+
+
+
+===========================
+MODULE 2 - SECTION 2.1.14
+===========================
+SECTION SUMMARY
+
+1. The print() function is a built-in function. It prints/outputs a specified message to the screen/console window.
+
+2. Built-in functions, contrary to user-defined functions, are always available and don't have to be imported. Python 3.8 comes with 69 built-in functions. You can find their full list provided in alphabetical order in the Python Standard Library.
+
+3. To call a function (this process is known as function invocation or function call), you need to use the function name followed by parentheses. You can pass arguments into a function by placing them inside the parentheses. You must separate arguments with a comma, e.g., print("Hello,", "world!"). An "empty" print() function outputs an empty line to the screen.
+
+4. Python strings are delimited with quotes, e.g., "I am a string" (double quotes), or 'I am a string, too' (single quotes).
+
+5. Computer programs are collections of instructions. An instruction is a command to perform a specific task when executed, e.g., to print a certain message to the screen.
+Let's see what you've learned today.
+
+6. In Python strings the backslash (\) is a special character which announces that the next character has a different meaning, e.g., \n (the newline character) starts a new output line.
+
+7. Positional arguments are the ones whose meaning is dictated by their position, e.g., the second argument is outputted after the first, the third is outputted after the second, etc.
+
+8. Keyword arguments are the ones whose meaning is not dictated by their location, but by a special word (keyword) used to identify them.
+
+9. The end and sep parameters can be used for formatting the output of the print() function. The sep parameter specifies the separator between the outputted arguments, e.g., print("H", "E", "L", "L", "O", sep="-"), whereas the end parameter specifies what to print at the end of the print statement.
+
+***Jeżeli chcę użyć ' to muszę skorzystać ze znaku uczeczki \'. Tak by Python nie traktował ' jako zakończenia stringa. 
+
+
+
+===========================
+MODULE 2 - SECTION 2.2.1
+===========================
+Literals – the data in itself 
+
+A literal is data whose values are determined by the literal itself.
+
+And this is the clue: 123 is a literal, and c is not.
+
+You use literals to encode data and to put them into your code. We're now going to show you some conventions you have to obey when using Python.
+
+The number is converted into machine representation (a set of bits). The print() function is able to show them both in a form readable to humans.
+
+
+
+===========================
+MODULE 2 - SECTION 2.2.2
+===========================
+Integers 
+
+Binary system is the system computers use for storing numbers, and that those computers can perform any operation upon them.
+
+Numbers handled by modern computers are of two types:
+
+   - integers, that is, those which are devoid of the fractional part;
+   - and floating-point numbers (or simply floats), that contain (or are able to contain) the fractional part.
+
+   !!! The characteristic of the numeric value which determines its kind, range, and application, is called the type. If you encode a literal and place it inside Python code, the form of the literal determines the representation (type) Python will use to store it in the memory.
+
+   You can write this number either like this: 11111111, or like this: 11_111_111.
+
+0o123 is an octal number with a (decimal) value equal to 83.
+0x123 is a hexadecimal number with a (decimal) value equal to 291.
+
+
+===========================
+MODULE 2 - SECTION 2.2.3
+===========================
+Floats 
+
+As you can probably imagine, the value of zero point four could be written in Python as:
+0.4
+
+But don't forget this simple rule ‒ you can omit zero when it is the only digit in front of or after the decimal point.
+
+In essence, you can write the value 0.4 as:
+.4
+
+For example: the value of 4.0 could be written as:
+4.
+
+!!!! This will change neither its type nor its value.
+
+
+Ints vs. floats
+
+The decimal point is essential for recognizing floating-point numbers in Python.
+
+Look at these two numbers:
+
+4
+4.0
+
+You may think that they are exactly the same, but Python sees them in a completely different way.
+
+4 is an integer number, whereas 4.0 is a floating-point number.
+
+The point is what makes a float.
+
+On the other hand, it's not only points that make a float. You can also use the letter e.
+
+When you want to use any numbers that are very large or very small, you can use scientific notation.
+
+Take, for example, the speed of light, expressed in meters per second. Written directly it would look like this: 300000000.
+
+To avoid writing out so many zeros, physics textbooks use an abbreviated form, which you have probably already seen: 3 x 108.
+
+It reads: three times ten to the power of eight.
+
+In Python, the same effect is achieved in a slightly different way ‒ take a look:
+3E8
+
+The letter E (you can also use the lower-case letter e ‒ it comes from the word exponent) is a concise record of the phrase times ten to the power of.
+
+Note:
+
+    the exponent (the value after the E) has to be an integer;
+    the base (the value in front of the E) may be either an integer or a float.
+
+A physical constant called Planck's constant (and denoted as h), according to the textbooks, has the value of: 6.62607 x 10^-34.
+
+If you would like to use it in a program, you should write it this way:
+6.62607e-34
+
+When you run this literal through Python:
+
+print(0.0000000000000000000001)
+ 
+Output
+1e-22
+
+Python always chooses the more economical form of the number's presentation, and you should take this into consideration when creating literals.
+
+
+
+===========================
+MODULE 2 - SECTION 2.2.4
+===========================
+Strings
+
+Let's assume that we want to print a very simple message saying:
+I like "Monty Python"
+
+How do we do it without generating an error? There are two possible solutions.
+
+The first is based on the concept we already know of the escape character, which you should remember is played by the backslash. The backslash can escape quotes too. A quote preceded by a backslash changes its meaning ‒ it's not a delimiter, but just a quote. This will work as intended:
+
+print("I like \"Monty Python\"")
+ 
+
+Note: there are two escaped quotes inside the string ‒ can you see them both?
+
+The second solution may be a bit surprising. Python can use an apostrophe instead of a quote. Either of these characters may delimit strings, but you must be consistent.
+
+If you open a string with a quote, you have to close it with a quote.
+
+If you start a string with an apostrophe, you have to end it with an apostrophe.
+
+This example will work too:
+
+print('I like "Monty Python"')
+ 
+
+Note: you don't need to do any escaping here.
+
+
+===========================
+MODULE 2 - SECTION 2.2.5
+===========================
+Boolean values 
+
+They're not as obvious as any of the previous ones, as they're used to represent a very abstract value ‒ truthfulness.
+
+Each time you ask Python if one number is greater than another, the question results in the creation of some specific data ‒ a Boolean value.
+
+The name comes from George Boole (1815-1864), the author of the fundamental work, The Laws of Thought, which contains the definition of Boolean algebra ‒ a part of algebra which makes use of only two distinct values: True and False, denoted as 1 and 0.
+
+Python, then, is a binary reptile.
+These two Boolean values have strict denotations in Python:
+True
+False
+
+You cannot change anything ‒ you have to take these symbols as they are, including case-sensitivity.
+
+===========================
+MODULE 2 - SECTION 2.3.2
+===========================
+Basic operators
+
+An operator is a symbol of the programming language, which is able to operate on the values.
+
+EXPRESSION: Remember: Data and operators when connected together form expressions. The simplest expression is a literal itself.
+
+ORDER:
+
++
+-
+*
+/
+//
+%
+**
+
+==============================================================================
+Remember: It's possible to formulate the following rules based on this result:
+
+    - when both ** arguments are integers, the result is an integer, too;
+    - when at least one ** argument is a float, the result is a float, too.
+
+!!!!!!!!!!!!!
+The result produced by the division operator is always a float, regardless of whether or not the result seems to be a float at first glance: 1 / 2, or if it looks like a pure integer: 2 / 1.
+
+
+Integer division (floor division)
+
+A // (double slash) sign is an integer division operator. It differs from the standard / operator in two details:
+
+    - its result lacks the fractional part ‒ it's absent (for integers), or is always equal to zero (for floats); this means that the results are always rounded;
+    - it conforms to the integer vs. float rule.
+
+
+print(6 // 3)
+print(6 // 3.)
+print(6. // 3)
+print(6. // 3.)
+
+OUTPUT:
+2
+2.0
+2.0
+2.0
+
+!!!!!!!!!!
+This is very important: rounding always goes to the lesser integer.
+print(6 // 4)
+print(6. // 4)
+
+OUTPUT:
+1
+1.0
+
+=================
+print(-6 // 4)
+print(6. // -4)
+
+OUTPUT:
+-2
+-2.0
+
+The result is two negative twos. The real (not rounded) result is -1.5 in both cases. However, the results are the subjects of rounding. The rounding goes toward the lesser integer value, and the lesser integer value is -2, hence: -2 and -2.0.
+
+Integer division can also be called floor division. You will definitely come across this term in the future.
+
+
+HIERARCHY OF PRIORITIES: The phenomenon that causes some operators to act before others is known as the hierarchy of priorities.
+
+Most of Python's operators have left-sided binding, which means that the calculation of the expression is conducted from left to right.
+
+The result clearly shows that the exponentiation (**) operator uses right-sided binding.
+print(2 ** 2 ** 3)
+2 ** 3 → 8; 2 ** 8 → 256
+
+
+print(-3 ** 2)
+print(-2 ** 3)
+print(-(3 ** 2))
+
+output:
+-9 bo ** ma wyższy priorytek i python wykonuje to tak jak to -(3 ** 2)
+-8
+-9
+
+
+1   **  
+2   +, - (note: unary operators located next to the right of the power operator bind more strongly)     unary
+3   *, /, //, %     
+4   +, -    binary
+
+*** A unary operator is an operator with only one operand, e.g., -1, or +3.
+
+*** A binary operator is an operator with two operands, e.g., 4 + 5, or 12 % 5.
+
+
+print(2 * 3 % 5)
+output: 1
+
+
+========================================================================
+Operators and parentheses
+
+Of course, you're always allowed to use parentheses, which can change the natural order of a calculation.
+
+In accordance with the arithmetic rules, subexpressions in parentheses are always calculated first.
+
+You can use as many parentheses as you need, and they're often used to improve the readability of an expression, even if they don't change the order of the operations.
+
+An example of an expression with multiple parentheses is here:
+
+print((5 * ((25 % 13) + 100) / (2 * 13)) // 2)
+
+       5 * ((12+100) / (26)) // 2
+
+
+SUMMARY:
+Key takeaways
+
+1. An expression is a combination of values (or variables, operators, calls to functions ‒ you will learn about them soon) which evaluates to a certain value, e.g., 1 + 2.
+
+2. Operators are special symbols or keywords which are able to operate on the values and perform (mathematical) operations, e.g., the * operator multiplies two values: x * y.
+
+3. Arithmetic operators in Python: + (addition), - (subtraction), * (multiplication), / (classic division ‒ always returns a float), % (modulus ‒ divides left operand by right operand and returns the remainder of the operation, e.g., 5 % 2 = 1), ** (exponentiation ‒ left operand raised to the power of right operand, e.g., 2 ** 3 = 2 * 2 * 2 = 8), // (floor/integer division ‒ returns a number resulting from division, but rounded down to the nearest whole number, e.g., 3 // 2.0 = 1.0)
+
+4. A unary operator is an operator with only one operand, e.g., -1, or +3.
+
+5. A binary operator is an operator with two operands, e.g., 4 + 5, or 12 % 5.
+
+6. Some operators act before others - the hierarchy of priorities:
+
+   - the ** operator (exponentiation) has the highest priority;
+   - then the unary + and - (note: a unary operator to the right of the exponentiation operator binds more strongly, for example 4 ** -1 equals 0.25)
+   - then: *, /, and %,
+   - and finally, the lowest priority: binary + and -.
+
+7. Subexpressions in parentheses are always calculated first, e.g., 15 - 1 * (5 * (1 + 2)) = 0.
+
+8. The exponentiation operator uses right-sided binding, e.g., 2 ** 2 ** 3 = 256.
+
+
+EXAMPLES:
+print((2 ** 4), (2 * 4.), (2 * 4))
+
+OUTPUT:
+16 8.0 8
+
+print((-2 / 4), (2 / 4), (2 // 4), (-2 // 4))
+
+OUTPUT:
+-0.5 0.5 0 -1
+
+print((2 % -4), (2 % 4), (2 ** 3 ** 2))
+
+OUTPUT:
+-2 2 512
+
+W przypadku (2 % -4), pierwszy argument to 2, a drugi to -4.
+
+    Dzielenie 2 przez -4 da wynik -0.5.
+    Reszta z tego dzielenia to 2 - (-0.5 * -4), co daje 2.
+
+W przypadku (2 % 4), mamy pierwszy argument jako 2, a drugi jako 4.
+
+    Dzielenie 2 przez 4 daje wynik 0.5.
+    Reszta z tego dzielenia to 2 - (0.5 * 4), co daje 2.
+
+
+
+===========================
+MODULE 2 - SECTION 2.4.1
+===========================
+Variables
+
+What does every Python variable have?
+
+    - a name;
+    - a value (the content of the container)
+
+
+
+
+
+If you want to give a name to a variable, you must follow some strict rules:
+
+    the name of the variable must be composed of upper-case or lower-case letters, digits, and the character _ (underscore)
+    the name of the variable must begin with a letter;
+    the underscore character is a letter;
+    upper- and lower-case letters are treated as different (a little differently than in the real world – Alice and ALICE are the same first names, but in Python they are two different variable names, and consequently, two different variables);
+    the name of the variable must not be any of Python's reserved words (the keywords – we'll explain more about this soon).
+
+Note that the same restrictions apply to function names.
+
+Python does not impose restrictions on the length of variable names, but that doesn't mean that a long variable name is always better than a short one.
+
+
+===========================
+MODULE 2 - SECTION 2.4.2
+===========================
+Keywords
+
+Take a look at the list of words that play a very special role in every Python program.
+
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+They are called keywords or (more precisely) reserved keywords. They are reserved because you mustn't use them as names: neither for your variables, nor functions, nor any other named entities you want to create.
+
+CREATING VARIABLE
+
+A variable comes into existence as a result of assigning a value to it. Unlike in other languages, you don't need to declare it in any special way.
+
+If you assign any value to a nonexistent variable, the variable will be automatically created. You don't need to do anything else.
+
+The creation (in other words, its syntax) is extremely simple: just use the name of the desired variable, then the equal sign (=) and the value you want to put into the variable.
+
+ASSIGNMENT OPERATOR - The equal sign is in fact an assignment operator. Although this may sound strange, the operator has a simple syntax and unambiguous interpretation.
