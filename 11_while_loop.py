@@ -10,8 +10,8 @@ number = int(input("Enter a number or type 0 to stop: "))
 
 # 0 terminates execution.
 while number != 0:
-# in python warunek niezerowy jest uznawany jako True
-# while number:
+    # in python warunek niezerowy jest uznawany jako True
+    # while number:
     # Check if the number is odd.
     # if number % 2: jest także zgodne bo daje logiczną jedynkę lub 0
     if number % 2 == 1:
@@ -26,3 +26,21 @@ while number != 0:
 # Print results.
 print("Odd numbers count:", odd_numbers)
 print("Even numbers count:", even_numbers)
+# ===========================================================================
+
+odd_numbers2 = 0
+even_numbers2 = 0
+
+number1 = int(input("Enter a number: "))
+
+while number1:
+    if number1 % 2:
+        print("Odd number")
+        odd_numbers2 += 1
+    else:
+        print("Even number")
+        even_numbers2 += 1
+    number1 = int(input("Enter a number: "))
+
+print("Odd numbers: ", odd_numbers2)
+print("Even numbers", even_numbers2)

@@ -1,4 +1,4 @@
- counter = 5
+counter = 5
 while counter != 0:
     print("Inside the loop.", counter)
     counter -= 1
