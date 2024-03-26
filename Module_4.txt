@@ -1,0 +1,153 @@
+====================
+MODULE 4 - Lists
+====================
+
+ 3.6.1 The inner life of lists
+
+Now we want to show you one important, and very surprising, feature of lists, which strongly distinguishes them from ordinary variables.
+
+We want you to memorize it ‒ it may affect your future programs, and cause severe problems if forgotten or overlooked.
+
+list_1 = [1]
+list_2 = list_1
+list_1[0] = 2
+print(list_2)
+
+Console:
+[2]
+
+The program:
+
+   - creates a one-element list named list_1;
+   - assigns it to a new list named list_2;
+   - changes the only element of list_1;
+   - prints out list_2.
+
+The surprising part is the fact that the program will output: [2], not [1], which seems to be the obvious solution.
+
+Lists (and many other complex Python entities) are stored in different ways than ordinary (scalar) variables.
+
+You could say that:
+
+   - the name of an ordinary variable is the name of its content;
+   - the name of a list is the name of a memory location where the list is stored.
+
+Read these two lines once more ‒ the difference is essential for understanding what we are going to talk about next.
+
+The assignment: list_2 = list_1 copies the name of the array, not its contents. In effect, the two names (list_1 and list_2) identify the same location in the computer memory. Modifying one of them affects the other, and vice versa.
+
+How to cope with that?:
+Fortunately, the solution is at your fingertips ‒ it's called a slice.
+
+A slice is an element of Python syntax that allows you to make a brand new copy of a list, or parts of a list.
+
+It actually copies the list's contents, not the list's name.
+
+This is exactly what you need. Take a look at the snippet below:
+
+list_1 = [1]
+list_2 = list_1[:]
+list_1[0] = 2
+print(list_2)
+ 
+Console:
+Its output is [1].
+
+This inconspicuous part of the code described as [:] is able to produce a brand new list.
+
+
+One of the most general forms of the slice looks as follows:
+
+my_list[start:end]
+
+As you can see, it resembles indexing, but the colon inside makes a big difference.
+
+A slice of this form makes a new (target) list, taking elements from the source list ‒ the elements of the indices from start to end - 1.
+
+Note: not to end but to end - 1. An element with an index equal to end is the first element which does not take part in the slicing.
+
+Using negative values for both start and end is possible (just like in indexing).
+
+
+===============================
+MODULE 4 - IN and NOT operators
+===============================
+
+ython offers two very powerful operators, able to look through the list in order to check whether a specific value is stored inside the list or not.
+
+These operators are:
+
+elem in my_list
+elem not in my_list
+ 
+
+The first of them (in) checks if a given element (its left argument) is currently stored somewhere inside the list (the right argument) ‒ the operator returns True in this case.
+
+The second (not in) checks if a given element (its left argument) is absent in a list ‒ the operator returns True in this case.
+
+my_list = [0, 3, 12, 8, 2]
+
+print(5 in my_list)
+print(5 not in my_list)
+print(12 in my_list)
+
+
+
+===============================
+MODULE 4 - SUMMARY 3.6.7
+===============================
+
+1. If you have a list list_1, then the following assignment: list_2 = list_1 does not make a copy of the list_1 list, but makes the variables list_1 and list_2 point to one and the same list in memory. For example:
+
+vehicles_one = ['car', 'bicycle', 'motor']
+print(vehicles_one) # outputs: ['car', 'bicycle', 'motor']
+ 
+vehicles_two = vehicles_one
+del vehicles_one[0] # deletes 'car'
+print(vehicles_two) # outputs: ['bicycle', 'motor']
+ 
+
+2. If you want to copy a list or part of the list, you can do it by performing slicing:
+
+colors = ['red', 'green', 'orange']
+ 
+copy_whole_colors = colors[:]  # copy the entire list
+copy_part_colors = colors[0:2]  # copy part of the list
+ 
+
+3. You can use negative indices to perform slices, too. For example:
+
+sample_list = ["A", "B", "C", "D", "E"]
+new_list = sample_list[2:-1]
+print(new_list)  # outputs: ['C', 'D']
+ 
+
+4. The start and end parameters are optional when performing a slice: list[start:end], e.g.:
+
+my_list = [1, 2, 3, 4, 5]
+slice_one = my_list[2: ]
+slice_two = my_list[ :2]
+slice_three = my_list[-2: ]
+ 
+print(slice_one)  # outputs: [3, 4, 5]
+print(slice_two)  # outputs: [1, 2]
+print(slice_three)  # outputs: [4, 5]
+ 
+
+5. You can delete slices using the del instruction:
+
+my_list = [1, 2, 3, 4, 5]
+del my_list[0:2]
+print(my_list)  # outputs: [3, 4, 5]
+ 
+del my_list[:]
+print(my_list)  # deletes the list content, outputs: []
+ 
+
+6. You can test if some items exist in a list or not using the keywords in and not in, e.g.:
+
+my_list = ["A", "B", 1, 2]
+ 
+print("A" in my_list)  # outputs: True
+print("C" not in my_list)  # outputs: True
+print(2 not in my_list)  # outputs: False
