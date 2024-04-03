@@ -26,7 +26,7 @@ def is_prime(num):
     return True
 
 
-for i in range(1, 20):
-    if is_prime(i + 1):
-        print(i + 1, end=" ")
+for i in range(2, 5):
+    if is_prime(i):
+        print(i, end=" ")
 print()
